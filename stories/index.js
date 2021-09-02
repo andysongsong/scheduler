@@ -10,7 +10,7 @@ import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
-import index from "components/Appointment/index";
+import Appointment from "components/Appointment/index";
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
@@ -124,14 +124,14 @@ storiesOf("InterviewerList", module)
   .add("Initial", () => (
     <InterviewerList
       interviewers={interviewers}
-      setInterviewer={action("setInterviewer")}
+      onChage={action("setInterviewer")}
     />
   ))
   .add("Preselected", () => (
     <InterviewerList
       interviewers={interviewers}
-      interviewer={3}
-      setInterviewer={action("setInterviewer")}
+      value={3}
+      onChange={action("setInterviewer")}
     />
   ));
 
@@ -163,5 +163,21 @@ storiesOf("Appointment", module)
     <Error
       message={"Could not delete appointment."}
       onClose={action("onClose")}
+    />
+  ))
+  .add("Edit", () => (
+    <Form
+      name={"my name"}
+      interviewers={interviewers}
+      value={interviewers[0].id}
+      onCancel={action("onCancel")}
+      onSave={action("onSave")}
+    />
+  ))
+  .add("Create", () => (
+    <Form
+      interviewers={interviewers}
+      onCancel={action("onCancel")}
+      onSave={action("onSave")}
     />
   ));
