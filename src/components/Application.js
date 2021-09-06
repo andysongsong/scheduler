@@ -20,6 +20,49 @@ export default function Application(props) {
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
+  const bookInterview = (id, interview) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    return axios
+      .put(`http://localhost:8001/api/appointments/${id}`, {
+        interview,
+      })
+      .then(() => {
+        setState((prev) => ({
+          ...prev,
+          appointments,
+        }));
+      });
+  };
+
+  const cancelInterview = (id) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+
+    return axios
+      .delete(`http://localhost:8001/api/appointments/${id}`)
+      .then(() => {
+        setState({
+          ...state,
+          appointments,
+        });
+      });
+  };
+
   const Appointments = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     const dailyInterviewers = getInterviewersForDay(state, state.day);
@@ -30,6 +73,8 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
@@ -60,6 +105,7 @@ export default function Application(props) {
   return (
     <main className="layout">
       <section className="sidebar">
+        {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
         <img
           className="sidebar--centered"
           src="images/logo.png"
@@ -74,7 +120,6 @@ export default function Application(props) {
           src="images/lhl.png"
           alt="Lighthouse Labs"
         />
-        {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
       </section>
       <section className="schedule">
         {Appointments}
