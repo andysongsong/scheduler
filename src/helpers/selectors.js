@@ -8,3 +8,13 @@ export function getAppointmentsForDay(state, day) {
     return state.appointments[apponitmentNum];
   });
 }
+
+export const getInterview = (state, interview) => {
+  if (!interview) return null;
+  const filteredInterview = {
+    student: interview.student,
+  };
+
+  filteredInterview.interviewer = state.interviewers[interview.interviewer];
+  return filteredInterview;
+};
