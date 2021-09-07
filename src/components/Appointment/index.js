@@ -25,11 +25,13 @@ const Appointment = (props) => {
       student: name,
       interviewer,
     };
-
     transition(SAVING);
-    props.bookInterview(props.id, interview).then(() => {
-      transition(SHOW);
-    });
+    props
+      .bookInterview(props.id, interview)
+      .then(() => {
+        transition(SHOW);
+      })
+      .catch((err) => console.log("err in save", err));
   };
 
   const deleting = () => {

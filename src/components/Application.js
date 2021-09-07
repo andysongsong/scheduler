@@ -30,6 +30,7 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment,
     };
+
     return axios
       .put(`http://localhost:8001/api/appointments/${id}`, {
         interview,
@@ -39,7 +40,8 @@ export default function Application(props) {
           ...prev,
           appointments,
         }));
-      });
+      })
+      .catch((err) => console.log("err", err));
   };
 
   const cancelInterview = (id) => {
