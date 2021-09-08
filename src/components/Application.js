@@ -61,3 +61,5 @@ const Application = () => {
     </main>
   );
 };
+
+export default Application;
