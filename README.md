@@ -23,3 +23,9 @@ npm run storybook
 ```
 
 ## Screenshots
+
+!["Screenshot of Main"](https://github.com/andysongsong/scheduler/blob/master/doc/Screen%20Shot%202021-09-08%20at%208.29.17%20PM.png?raw=true)
+
+!["Screenshot "]('https://github.com/andysongsong/scheduler/blob/master/doc/Screen%20Shot%202021-09-08%20at%208.29.28%20PM.png?raw=true')
+
+!["Screenshot "](https://github.com/andysongsong/scheduler/blob/master/doc/Screen%20Shot%202021-09-08%20at%208.29.44%20PM.png?raw=true)
