@@ -13,25 +13,20 @@ const useApplicationData = () => {
 
   //useEffect hook to get data from the api
   useEffect(() => {
-    const getDaysURL = "http://localhost:8001/api/days";
-    const getAppointmentsURL = "http://localhost:8001/api/appointments";
-    const getInterviewersURL = "http://localhost:8001/api/interviewers";
-
     Promise.all([
-      axios.get(getDaysURL),
-      axios.get(getAppointmentsURL),
-      axios.get(getInterviewersURL),
+      Promise.resolve(axios.get("/api/days")),
+      Promise.resolve(axios.get("/api/appointments")),
+      Promise.resolve(axios.get("/api/interviewers")),
     ]).then((all) => {
-      const [days, appointments, interviewers] = all;
-      //create setters for states
       setState((prev) => ({
         ...prev,
-        days: days.data,
-        appointments: appointments.data,
-        interviewers: interviewers.data,
+        days: all[0].data,
+        appointments: all[1].data,
+        interviewers: all[2].data,
       }));
     });
   }, []);
+
   // console.log('state', state);
   const bookInterview = (id, interview) => {
     const appointment = {
@@ -45,7 +40,7 @@ const useApplicationData = () => {
     };
 
     return axios
-      .put(`http://localhost:8001/api/appointments/${id}`, {
+      .put(`/api/appointments/${id}`, {
         interview,
       })
       .then(() => {
@@ -93,7 +88,7 @@ const useApplicationData = () => {
     };
 
     return axios
-      .delete(`http://localhost:8001/api/appointments/${id}`)
+      .delete(`/api/appointments/${id}`)
       .then(() => {
         setState({
           ...state,
