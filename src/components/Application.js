@@ -1,15 +1,14 @@
 import DayList from "./DayList";
 import React from "react";
 import Appointment from "./Appointment";
-
 import useApplicationData from "hooks/useApplicationData";
+import "components/Application.scss";
+
 import {
   getAppointmentsForDay,
   getInterview,
   getInterviewersForDay,
 } from "helpers/selectors";
-
-import "components/Application.scss";
 
 const Application = () => {
   const { state, setDay, bookInterview, cancelInterview } =
