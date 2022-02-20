@@ -1,5 +1,11 @@
 # Interview Scheduler
 
+Using the latest tools and techniques, Interview Scheduler is a React application that allows users to book and cancel interviews.
+
+## Final Product
+
+!["screen recording"](https://github.com/woodpeckershop/scheduler/blob/master/doc/Scheduler.gif?raw=true)
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -18,14 +24,6 @@ npm test
 
 ## Running Storybook Visual Testbed
 
-```
+```sh
 npm run storybook
 ```
-
-## Screenshots
-
-!["Screenshot of Main"](https://github.com/andysongsong/scheduler/blob/master/doc/Screen%20Shot%202021-09-08%20at%208.29.17%20PM.png?raw=true)
-
-!["Screenshot "]('https://github.com/andysongsong/scheduler/blob/master/doc/Screen%20Shot%202021-09-08%20at%208.29.28%20PM.png?raw=true')
-
-!["Screenshot "](https://github.com/andysongsong/scheduler/blob/master/doc/Screen%20Shot%202021-09-08%20at%208.29.44%20PM.png?raw=true)
